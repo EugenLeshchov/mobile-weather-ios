@@ -9,7 +9,9 @@
 import UIKit
 import SwiftyJSON
 
-class ContainerViewController: UIViewController, UISplitViewControllerDelegate {    
+class ContainerViewController: UIViewController, UISplitViewControllerDelegate {
+    var localizationManager: LocalizationManager!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let splitViewController = self.childViewControllers.first as? UISplitViewController,
@@ -26,6 +28,11 @@ class ContainerViewController: UIViewController, UISplitViewControllerDelegate {
         detailViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
         splitViewController.delegate = self
         splitViewController.preferredDisplayMode = .allVisible
+        
+        localizationManager = LocalizationManager()
+        localizationManager.addLocalizationCallback() { (locale: String) in
+            self.tabBarItem.title = self.tabBarItem.title!.localized(lang: locale)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

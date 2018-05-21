@@ -1,0 +1,54 @@
+
+/* Class = "UITabBarItem"; title = "Main"; ObjectID = "29Z-iB-ZVc"; */
+"29Z-iB-ZVc.title" = "Главная";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "2BZ-xp-OKG"; */
+//"2BZ-xp-OKG.text" = "Label";
+
+/* Class = "UILabel"; text = "Red"; ObjectID = "2du-wf-o7V"; */
+"2du-wf-o7V.text" = "Красный";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "7Bs-P4-xKH"; */
+//"7Bs-P4-xKH.text" = "Label";
+
+/* Class = "UILabel"; text = "Green"; ObjectID = "Dit-Jm-aI2"; */
+"Dit-Jm-aI2.text" = "Зеленый";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "EkH-YE-YdZ"; */
+//"EkH-YE-YdZ.text" = "Label";
+
+/* Class = "UILabel"; text = "Font color"; ObjectID = "JsB-Q2-EuN"; */
+"JsB-Q2-EuN.text" = "Цвет шрифта";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "LjZ-O7-jH4"; */
+//"LjZ-O7-jH4.text" = "Label";
+
+/* Class = "UINavigationItem"; title = "Cities"; ObjectID = "MBP-LF-kr5"; */
+"MBP-LF-kr5.title" = "Города";
+
+/* Class = "UITabBarItem"; title = "Settings"; ObjectID = "MkT-qk-Fjx"; */
+"MkT-qk-Fjx.title" = "Настройки";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "PBa-FM-Vkp"; */
+//"PBa-FM-Vkp.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Vtd-lD-QNR"; */
+//"Vtd-lD-QNR.text" = "Label";
+
+/* Class = "UILabel"; text = "Font size"; ObjectID = "YaO-IH-oYk"; */
+"YaO-IH-oYk.text" = "Размер шрифта";
+
+/* Class = "UITabBarItem"; title = "Map"; ObjectID = "k0S-RH-IUf"; */
+"k0S-RH-IUf.title" = "Карта";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "ocq-je-qQ3"; */
+//"ocq-je-qQ3.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "ov0-Et-4lN"; */
+//"ov0-Et-4lN.text" = "Label";
+
+/* Class = "UILabel"; text = "Blue"; ObjectID = "r3H-hg-U9C"; */
+"r3H-hg-U9C.text" = "Синий";
+
+"tzv-6M-IiC.text" = "Язык";
+

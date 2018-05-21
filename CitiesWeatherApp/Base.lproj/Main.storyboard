@@ -298,7 +298,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Font size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YaO-IH-oYk" userLabel="font size label" customClass="CustomizableLabel" customModule="CitiesWeatherApp" customModuleProvider="target">
-                                <rect key="frame" x="36" y="90" width="290" height="21"/>
+                                <rect key="frame" x="36" y="37" width="290" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -314,19 +314,37 @@
                                 </connections>
                             </view>
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="17" minValue="10" maxValue="30" translatesAutoresizingMaskIntoConstraints="NO" id="alK-yt-UIr" userLabel="font size slider">
-                                <rect key="frame" x="369" y="86" width="343" height="30"/>
+                                <rect key="frame" x="369" y="51" width="343" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="fontSizeChanged:" destination="u6Z-fc-Zhp" eventType="valueChanged" id="EKt-h7-ccg"/>
                                 </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Font color" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JsB-Q2-EuN" userLabel="font color label" customClass="CustomizableLabel" customModule="CitiesWeatherApp" customModuleProvider="target">
-                                <rect key="frame" x="36" y="156" width="285" height="21"/>
+                                <rect key="frame" x="36" y="163" width="285" height="61"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Language" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tzv-6M-IiC" customClass="CustomizableLabel" customModule="CitiesWeatherApp" customModuleProvider="target">
+                                <rect key="frame" x="36" y="314" width="132" height="68"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="9iP-MW-dsc">
+                                <rect key="frame" x="357" y="335" width="160" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                                <connections>
+                                    <action selector="languageChanged:" destination="u6Z-fc-Zhp" eventType="valueChanged" id="ap0-XI-d1o"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="fMX-h9-H6g"/>
@@ -336,6 +354,7 @@
                         <outlet property="fontColor" destination="GIT-ww-4pz" id="EcT-Xg-1F0"/>
                         <outlet property="fontSizeLabel" destination="YaO-IH-oYk" id="P08-cp-xZ7"/>
                         <outlet property="fontSizeSlider" destination="alK-yt-UIr" id="5P9-CV-1Nt"/>
+                        <outlet property="languageControl" destination="9iP-MW-dsc" id="ZvF-d6-kk6"/>
                         <segue destination="Am3-Rn-SY5" kind="popoverPresentation" identifier="chooseColorSegue" popoverAnchorView="GIT-ww-4pz" id="L4Y-6c-YQZ">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                         </segue>

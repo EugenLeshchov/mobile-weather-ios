@@ -20,12 +20,17 @@ class MasterViewController: UITableViewController {
     @IBOutlet var citiesTableView: UITableView!
     weak var delegate: CitySelectionDelegate?
     private let citiesRefreshControl = UIRefreshControl()
+    var localizationManager: LocalizationManager!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         citiesTableView.refreshControl = citiesRefreshControl
         citiesRefreshControl.addTarget(self, action: #selector(MasterViewController.updateCities), for: .valueChanged)
         loadImages()
+        localizationManager = LocalizationManager()
+        localizationManager.addLocalizationCallback() { (locale: String) in
+            self.navigationItem.title = self.navigationItem.title!.localized(lang: locale)
+        }
     }
 
 
@@ -72,7 +77,9 @@ class MasterViewController: UITableViewController {
                     self.cities[index].image = image!
                     let indexPath = IndexPath(item: index, section: 0)
                     self.citiesTableView.reloadRows(at: [indexPath], with: .top)
-//                    self.delegate?.citySelected(self.cities[index])
+                    if index == self.citiesTableView.indexPathForSelectedRow?.row ?? 0 {
+                        self.delegate?.citySelected(self.cities[index])
+                    }
                 }
             }
         }

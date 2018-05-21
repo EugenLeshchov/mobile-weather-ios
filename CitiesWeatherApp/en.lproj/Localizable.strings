@@ -1,0 +1,19 @@
+/* 
+  Localizable.strings
+  CitiesWeatherApp
+
+  Created by Vlad on 4/4/18.
+  Copyright © 2018 Vlad. All rights reserved.
+*/
+"Язык" = "Language";
+"Размер шрифта" = "Font size";
+"Цвет шрифта" = "Font color";
+"Главная" = "Main";
+"Карта" = "Map";
+"Настройки" = "Settings";
+"Города" = "Cities";
+"Красный" = "Red";
+"Зеленый" = "Green";
+"Синий" = "Blue";
+"Рус" = "Russian";
+"Англ" = "English";

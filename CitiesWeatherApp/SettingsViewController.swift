@@ -13,8 +13,25 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var fontColor: UIView!
     @IBOutlet weak var fontSizeSlider: UISlider!
     @IBOutlet weak var fontSizeLabel: UILabel!
+    @IBOutlet weak var languageControl: UISegmentedControl!
+    var localizationManager: LocalizationManager!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        languageControl.setTitle("English", forSegmentAt: 0)
+        languageControl.setTitle("Russian", forSegmentAt: 1)
+        localizationManager = LocalizationManager()
+        localizationManager.addLocalizationCallback() { (locale: String) in
+            self.tabBarItem.title = self.tabBarItem.title!.localized(lang: locale)
+        }
+        localizationManager.addLocalizationCallback() { (locale: String) in
+            let localizedTitle = self.languageControl.titleForSegment(at: 0)?.localized(lang: locale)
+            self.languageControl.setTitle(localizedTitle, forSegmentAt: 0)
+        }
+        localizationManager.addLocalizationCallback() { (locale: String) in
+            let localizedTitle = self.languageControl.titleForSegment(at: 1)?.localized(lang: locale)
+            self.languageControl.setTitle(localizedTitle, forSegmentAt: 1)
+        }
         // Do any additional setup after loading the view.
     }
 
@@ -39,13 +56,21 @@ class SettingsViewController: UIViewController {
     
     @IBAction func fontSizeChanged(_ sender: Any) {
         let fontSize = CGFloat(fontSizeSlider.value)
-        print(fontSize)
-//        fontSizeLabel.font = UIFont(name: fontSizeLabel.font.fontName, size: fontSize)
-//        fontSizeLabel.sizeToFit()
-        
-        UILabel.appearance().defaultFont = UIFont.systemFont(ofSize: fontSize)
         NotificationCenter.default.post(name: Notification.Name("changeFontSize"), object: fontSize)
 
+    }
+    
+    @IBAction func languageChanged(_ sender: Any) {
+        switch languageControl.selectedSegmentIndex {
+            case 0:
+                NotificationCenter.default.post(name: Notification.Name("localizeStoryboard"), object: "en")
+                NotificationCenter.default.post(name: Notification.Name("changeLocale"), object: "en")
+            case 1:
+                NotificationCenter.default.post(name: Notification.Name("localizeStoryboard"), object: "ru")
+                NotificationCenter.default.post(name: Notification.Name("changeLocale"), object: "ru")
+
+            default: break
+        }
     }
     /*
     // MARK: - Navigation
@@ -68,20 +93,12 @@ extension UILabel{
 
 class CustomizableLabel: UILabel {
     
-    /*
-     // Only override drawRect: if you perform custom drawing.
-     // An empty implementation adversely affects performance during animation.
-     override func drawRect(rect: CGRect) {
-     // Drawing code
-     }
-     */
-    
     override init(frame: CGRect) {
-        
         super.init(frame: frame)
         
         NotificationCenter.default.addObserver(self, selector: #selector(changeFontSize(notification:)), name: NSNotification.Name(rawValue: "changeFontSize"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(changeFontColor(notification:)), name: NSNotification.Name(rawValue: "changeFontColor"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(changeLocale(notification:)), name: NSNotification.Name(rawValue: "changeLocale"), object: nil)
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -90,6 +107,7 @@ class CustomizableLabel: UILabel {
         
         NotificationCenter.default.addObserver(self, selector: #selector(changeFontSize(notification:)), name: NSNotification.Name(rawValue: "changeFontSize"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(changeFontColor(notification:)), name: NSNotification.Name(rawValue: "changeFontColor"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(changeLocale(notification:)), name: NSNotification.Name(rawValue: "changeLocale"), object: nil)
     }
     
     @objc func changeFontSize(notification:NSNotification){
@@ -101,4 +119,18 @@ class CustomizableLabel: UILabel {
         self.textColor = notification.object as! UIColor
     }
     
+    @objc func changeLocale(notification:NSNotification){
+        self.text = self.text?.localized(lang: notification.object as! String)
+    }
 }
+
+extension String {
+    func localized(lang: String) ->String {
+        
+        let path = Bundle.main.path(forResource: lang, ofType: "lproj")
+        let bundle = Bundle(path: path!)
+        
+        return NSLocalizedString(self, tableName: nil, bundle: bundle!, value: "", comment: "")
+    }
+}
+

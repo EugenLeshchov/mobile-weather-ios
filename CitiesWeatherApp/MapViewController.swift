@@ -15,10 +15,15 @@ class MapViewController: UIViewController, MKMapViewDelegate, UIGestureRecognize
     @IBOutlet var gestureRecognizer: UITapGestureRecognizer!
     var cityAnnotation: CityAnnotation?
     var cityCoordinate: CLLocationCoordinate2D?
+    var localizationManager: LocalizationManager!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
+        localizationManager = LocalizationManager()
+        localizationManager.addLocalizationCallback() { (locale: String) in
+            self.tabBarItem.title = self.tabBarItem.title!.localized(lang: locale)
+        }
         // Do any additional setup after loading the view.
     }
 
@@ -43,7 +48,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UIGestureRecognize
                 let windIconView = UIImageView()
                 windIconView.image = windIcon
                 windIconView.clipsToBounds = true
-                let transform = CGAffineTransform(scaleX: 0.3, y: 0.3).concatenating(CGAffineTransform(rotationAngle: CGFloat(275).toRadians))
+                let transform = CGAffineTransform(scaleX: 0.3, y: 0.3).concatenating(CGAffineTransform(rotationAngle: CGFloat(cityAnnotation.windDirection).toRadians))
                 windIconView.transform = transform
                 annotationView.detailCalloutAccessoryView = windIconView
                 return annotationView

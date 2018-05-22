@@ -1,0 +1,137 @@
+[
+ {
+    "weatherInfo": {
+        "id": 1880251
+    },
+    "name": "Singapore",
+    "longtitude": 103.800003,
+    "latitude": 1.36667,
+    "imageUrl": "https://www.citi.io/wp-content/uploads/2018/02/1-singapore.jpg"
+ },
+{
+    "weatherInfo": {
+        "id": 2147714
+    },
+    "name": "Sydney",
+    "longtitude": 151.207321,
+    "latitude": -33.867851,
+    "imageUrl": "https://www.citi.io/wp-content/uploads/2018/02/2-sydney.jpg"
+},
+{
+    "weatherInfo": {
+        "id": 6090785
+    },
+    "name": "Vancouver",
+    "longtitude": -123.069344,
+    "latitude": 49.31636,
+    "imageUrl": "https://www.citi.io/wp-content/uploads/2018/02/3-vancouver.jpg"
+},
+{
+    "weatherInfo": {
+        "id": 5913695
+    },
+    "name": "Cambridge",
+    "longtitude": -80.312691,
+    "latitude": 43.3601,
+    "imageUrl": "https://www.citi.io/wp-content/uploads/2018/02/4-cambridge-ma.jpg"
+},
+{
+    "weatherInfo": {
+        "id": 993800
+    },
+    "name": "Johannesburg",
+    "longtitude": 28.043631,
+    "latitude": -26.202271,
+    "imageUrl": "https://www.citi.io/wp-content/uploads/2018/02/6-johannesburg.jpg"
+},
+{
+    "weatherInfo": {
+        "id": 2925533
+    },
+    "name": "Frankfurt am Main",
+    "longtitude": 8.68333,
+    "latitude": 50.116669,
+    "imageUrl": "https://www.citi.io/wp-content/uploads/2018/02/8-frankfurt.jpg"
+},
+{
+    "weatherInfo": {
+        "id": 2759794
+    },
+    "name": "Amsterdam",
+    "longtitude": 4.88969,
+    "latitude": 52.374031,
+    "imageUrl": "https://www.citi.io/wp-content/uploads/2018/02/10-amsterdam.jpg"
+},
+{
+     "weatherInfo": {
+        "id": 5809844
+     },
+    "name": "Seattle",
+    "longtitude": -122.332069,
+    "latitude": 47.606209,
+    "imageUrl": "https://www.citi.io/wp-content/uploads/2018/02/11-seattle.jpg"
+},
+{
+     "weatherInfo": {
+        "id": 6167865
+     },
+    "name": "Toronto",
+    "longtitude": -79.416298,
+    "latitude": 43.700111,
+    "imageUrl": "https://www.citi.io/wp-content/uploads/2018/02/12-toronto.jpg"
+},
+{
+     "weatherInfo": {
+        "id": 4164138
+     },
+    "name": "Miami",
+    "longtitude": -80.193657,
+    "latitude": 25.774269,
+    "imageUrl": "https://www.citi.io/wp-content/uploads/2018/02/13-miami.jpg"
+},
+{
+     "weatherInfo": {
+        "id": 4183849
+     },
+    "name": "Boston",
+    "longtitude": -83.789886,
+    "latitude": 30.791861,
+    "imageUrl": "https://www.citi.io/wp-content/uploads/2018/02/14-boston.jpg"
+},
+{
+     "weatherInfo": {
+        "id": 293397
+     },
+    "name": "Tel Aviv",
+    "longtitude": 34.780571,
+    "latitude": 32.080879,
+    "imageUrl": "https://www.citi.io/wp-content/uploads/2018/02/15-tel-aviv.jpg"
+},
+{
+     "weatherInfo": {
+        "id": 6458783
+     },
+    "name": "Geneva",
+    "longtitude": 6.12737,
+    "latitude": 46.208038,
+    "imageUrl": "https://www.citi.io/wp-content/uploads/2018/02/9-geneva.jpg"
+},
+{
+     "weatherInfo": {
+        "id": 1007311
+     },
+    "name": "Durban",
+    "longtitude": 31.0292,
+    "latitude": -29.857901,
+    "imageUrl": "https://www.citi.io/wp-content/uploads/2018/02/5-durban.jpeg"
+},
+{
+     "weatherInfo": {
+        "id": 5389489
+     },
+    "name": "Sacramento",
+    "longtitude": -121.4944,
+    "latitude": 38.58157,
+    "imageUrl": "https://www.citi.io/wp-content/uploads/2018/02/7-sacramento-ca.jpg"
+ }
+]

@@ -86,6 +86,7 @@ class CityDetailsViewController: UIViewController, MKMapViewDelegate {
         }
         return nil
     }
+    
     /*
     // MARK: - Navigation
 

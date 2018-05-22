@@ -27,29 +27,18 @@ class CityDetailsViewController: UIViewController, MKMapViewDelegate {
     func setupView() {
         loadViewIfNeeded()
         let weatherInfo = city?.weatherInfo
-        let weather = formattedWeather(temperature: weatherInfo?.temperature, humidity: weatherInfo?.humidity, pressure: weatherInfo?.pressure)
+        let weather = formattedWeather(temperature: weatherInfo!.temperature, humidity: weatherInfo!.humidity, pressure: weatherInfo!.pressure)
         cityName.text = city!.name
         cityCoordinates.text = formattedCoordinates(latitude: city!.latitude, longtitude: city!.longtitude)
         cityWeather.text = weather
         cityDescription.text = city!.description
+        cityDescription.sizeToFit()
         cityImage.image = city?.image
         let coordinate = CLLocationCoordinate2DMake(city!.latitude, city!.longtitude)
         let region = MKCoordinateRegionMakeWithDistance(coordinate, 500000, 500000)
         mapView.setRegion(region, animated: true)
         let annotation = CityAnnotation(title: city!.name, subtitle: weather, coordinate: coordinate, windDirection: weatherInfo?.windDirection)
         mapView.addAnnotation(annotation)
-    }
-    
-    func formattedCoordinates(latitude: Double, longtitude: Double) -> String {
-        return "Latitude: \(NSString(format: "%.6f", latitude)), longtitude: \(NSString(format: "%.6f", longtitude))"
-    }
-    
-    func formattedWeather(temperature: Double?, humidity: Double?, pressure: Double?) -> String {
-        var weather: String = ""
-        if temperature != nil { weather += "Temperature: \(temperature!)°C"}
-        if humidity != nil { weather += " humidity: \(humidity!)%"}
-        if pressure != nil { weather += " pressure: \(pressure!) mm Hg"}
-        return weather
     }
     
     override func viewDidLoad() {
@@ -75,12 +64,13 @@ class CityDetailsViewController: UIViewController, MKMapViewDelegate {
                 annotationView.isEnabled = true
                 annotationView.canShowCallout = true
                 
-                let windIcon = UIImage(named: "arrow_icon")
-                let windIconView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-                windIconView.image = windIcon
-                annotationView.rightCalloutAccessoryView = windIconView
-                let transform = CGAffineTransform(rotationAngle: CGFloat(cityAnnotation.windDirection).toRadians)
-                windIconView.transform = transform
+                let calloutView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+                annotationView.rightCalloutAccessoryView = calloutView
+                let imageView = UIImageView()
+                imageView.image = UIImage(named: "arrow_icon")
+                calloutView.addSubview(imageView)
+                imageView.frame = calloutView.bounds
+                imageView.transform = CGAffineTransform(rotationAngle: CGFloat(cityAnnotation.windDirection).toRadians)
                 return annotationView
             }
         }

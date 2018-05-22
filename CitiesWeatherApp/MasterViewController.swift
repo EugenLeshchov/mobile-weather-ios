@@ -20,19 +20,25 @@ class MasterViewController: UITableViewController {
     @IBOutlet var citiesTableView: UITableView!
     weak var delegate: CitySelectionDelegate?
     private let citiesRefreshControl = UIRefreshControl()
-    var localizationManager: LocalizationManager!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupView()
+    }
+
+    func setupView(){
         citiesTableView.refreshControl = citiesRefreshControl
         citiesRefreshControl.addTarget(self, action: #selector(MasterViewController.updateCities), for: .valueChanged)
         loadImages()
-        localizationManager = LocalizationManager()
-        localizationManager.addLocalizationCallback() { (locale: String) in
-            self.navigationItem.title = self.navigationItem.title!.localized(lang: locale)
+        GlobalSettings.instance.localeChangedEvent.addEventHandler { (locale) in
+            self.updateLocale(locale: locale)
         }
+        updateCitiesWeatherInfo()
     }
-
+    
+    func updateLocale(locale: String) {
+        navigationItem.title = localizedString(key: "cities", lang: locale)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -129,18 +135,6 @@ class MasterViewController: UITableViewController {
     }
 
     
-    func formattedCoordinates(latitude: Double, longtitude: Double) -> String {
-        return "Latitude: \(NSString(format: "%.6f", latitude)), longtitude: \(NSString(format: "%.6f", longtitude))"
-    }
-    
-    func formattedWeather(temperature: Double?, humidity: Double?, pressure: Double?) -> String {
-        var weather: String = ""
-        if temperature != nil { weather += "Temperature: \(temperature!)°C"}
-        if humidity != nil { weather += " humidity: \(humidity!)%"}
-        if pressure != nil { weather += " pressure: \(pressure!) mm Hg"}
-        return weather
-    }
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedCity = cities[indexPath.row]
         delegate?.citySelected(selectedCity)
@@ -154,7 +148,6 @@ class MasterViewController: UITableViewController {
         let token = "138ed6a22079c3e4f0cf209f46cfb39a"
         let weatherApiUrl = "https://api.openweathermap.org/data/2.5/weather?id=\(cities[index].weatherInfo.id)&appid=\(token)&units=metric"
         Alamofire.request(weatherApiUrl).responseJSON { response in
-            print(response)
             if let data = response.data {
                 let json = JSON(data)
                 print(json)

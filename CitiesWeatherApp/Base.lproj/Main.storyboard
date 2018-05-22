@@ -6,6 +6,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -25,13 +27,12 @@
                                         <rect key="frame" x="0.0" y="0.0" width="834" height="1063"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="6qH-KJ-LJU" userLabel="top page">
-                                                <rect key="frame" x="20" y="20" width="794" height="250"/>
+                                                <rect key="frame" x="20" y="20" width="794" height="270.5"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ObV-Up-0tP" userLabel="city image">
                                                         <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="250" id="UYQ-oz-TpI"/>
-                                                            <constraint firstAttribute="width" constant="250" id="xNL-eL-urf"/>
+                                                            <constraint firstAttribute="width" secondItem="ObV-Up-0tP" secondAttribute="height" multiplier="1:1" id="ZDI-0t-So2"/>
                                                         </constraints>
                                                     </imageView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="mp8-q7-NuI" userLabel="city main info">
@@ -58,15 +59,22 @@
                                                         </subviews>
                                                     </stackView>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="ObV-Up-0tP" firstAttribute="width" secondItem="6qH-KJ-LJU" secondAttribute="width" multiplier="250:794" id="Gfm-UG-Ia5"/>
+                                                    <constraint firstItem="mp8-q7-NuI" firstAttribute="width" secondItem="6qH-KJ-LJU" secondAttribute="width" multiplier="524:794" id="U5D-D2-xXt"/>
+                                                </constraints>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EkH-YE-YdZ" userLabel="city description" customClass="CustomizableLabel" customModule="CitiesWeatherApp" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="290" width="794" height="20.5"/>
+                                                <rect key="frame" x="20" y="206.5" width="794" height="0.0"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Tpy-RO-PAi" userLabel="map">
                                                 <rect key="frame" x="20" y="320.5" width="794" height="732.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="Tpy-RO-PAi" secondAttribute="height" multiplier="397:366" id="r5d-eZ-osJ"/>
+                                                </constraints>
                                             </mapView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -297,49 +305,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Font size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YaO-IH-oYk" userLabel="font size label" customClass="CustomizableLabel" customModule="CitiesWeatherApp" customModuleProvider="target">
-                                <rect key="frame" x="36" y="37" width="290" height="56"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Font size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YaO-IH-oYk" userLabel="font size label" customClass="CustomizableLabel" customModule="CitiesWeatherApp" customModuleProvider="target">
+                                <rect key="frame" x="36" y="70" width="238" height="20.5"/>
+                                <accessibility key="accessibilityConfiguration" identifier="fontSize"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GIT-ww-4pz" userLabel="color picker">
-                                <rect key="frame" x="371" y="163" width="146" height="61"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Font color" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JsB-Q2-EuN" userLabel="font color label" customClass="CustomizableLabel" customModule="CitiesWeatherApp" customModuleProvider="target">
+                                <rect key="frame" x="36" y="190.5" width="238" height="20.5"/>
+                                <accessibility key="accessibilityConfiguration" identifier="fontColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Language" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tzv-6M-IiC" customClass="CustomizableLabel" customModule="CitiesWeatherApp" customModuleProvider="target">
+                                <rect key="frame" x="36" y="311" width="238" height="20.5"/>
+                                <accessibility key="accessibilityConfiguration" identifier="language"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GIT-ww-4pz" userLabel="color picker">
+                                <rect key="frame" x="314" y="171" width="150" height="60"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="vfx-2Q-hcZ" appends="YES" id="cXp-Ge-dyZ"/>
                                 </connections>
                             </view>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="17" minValue="10" maxValue="30" translatesAutoresizingMaskIntoConstraints="NO" id="alK-yt-UIr" userLabel="font size slider">
-                                <rect key="frame" x="369" y="51" width="343" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="17" minValue="12" maxValue="23" translatesAutoresizingMaskIntoConstraints="NO" id="alK-yt-UIr" userLabel="font size slider">
+                                <rect key="frame" x="312" y="65.5" width="504" height="31"/>
                                 <connections>
                                     <action selector="fontSizeChanged:" destination="u6Z-fc-Zhp" eventType="valueChanged" id="EKt-h7-ccg"/>
                                 </connections>
                             </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Font color" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JsB-Q2-EuN" userLabel="font color label" customClass="CustomizableLabel" customModule="CitiesWeatherApp" customModuleProvider="target">
-                                <rect key="frame" x="36" y="163" width="285" height="61"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Language" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tzv-6M-IiC" customClass="CustomizableLabel" customModule="CitiesWeatherApp" customModuleProvider="target">
-                                <rect key="frame" x="36" y="314" width="132" height="68"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="9iP-MW-dsc">
-                                <rect key="frame" x="357" y="335" width="160" height="28"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="9iP-MW-dsc">
+                                <rect key="frame" x="314" y="307.5" width="123" height="29"/>
                                 <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
+                                    <segment title="English"/>
+                                    <segment title="Russian"/>
                                 </segments>
                                 <connections>
                                     <action selector="languageChanged:" destination="u6Z-fc-Zhp" eventType="valueChanged" id="ap0-XI-d1o"/>
@@ -347,14 +352,38 @@
                             </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="GIT-ww-4pz" firstAttribute="centerY" secondItem="JsB-Q2-EuN" secondAttribute="centerY" id="4jl-r6-KCG"/>
+                            <constraint firstItem="alK-yt-UIr" firstAttribute="leading" secondItem="YaO-IH-oYk" secondAttribute="trailing" constant="40" id="5x6-5t-QWY"/>
+                            <constraint firstItem="JsB-Q2-EuN" firstAttribute="leading" secondItem="fMX-h9-H6g" secondAttribute="leading" constant="36" id="ApA-pe-all"/>
+                            <constraint firstItem="tzv-6M-IiC" firstAttribute="leading" secondItem="fMX-h9-H6g" secondAttribute="leading" constant="36" id="Gdu-bN-bhs"/>
+                            <constraint firstItem="JsB-Q2-EuN" firstAttribute="top" secondItem="YaO-IH-oYk" secondAttribute="bottom" constant="100" id="Ixx-kx-Bll"/>
+                            <constraint firstItem="YaO-IH-oYk" firstAttribute="leading" secondItem="fMX-h9-H6g" secondAttribute="leading" constant="36" id="OJs-a1-alc"/>
+                            <constraint firstItem="GIT-ww-4pz" firstAttribute="width" secondItem="5qB-5x-MAb" secondAttribute="width" multiplier="150:834" id="OQO-ZK-2Gh"/>
+                            <constraint firstItem="fMX-h9-H6g" firstAttribute="trailing" secondItem="alK-yt-UIr" secondAttribute="trailing" constant="20" id="Pf8-Rw-PwR"/>
+                            <constraint firstItem="GIT-ww-4pz" firstAttribute="height" secondItem="5qB-5x-MAb" secondAttribute="height" multiplier="60:1112" id="PfX-qC-45t"/>
+                            <constraint firstItem="JsB-Q2-EuN" firstAttribute="width" secondItem="5qB-5x-MAb" secondAttribute="width" multiplier="1:3" constant="-40" id="TOG-dH-Pxv"/>
+                            <constraint firstItem="tzv-6M-IiC" firstAttribute="top" secondItem="JsB-Q2-EuN" secondAttribute="bottom" constant="100" id="U4C-9J-wdZ"/>
+                            <constraint firstItem="tzv-6M-IiC" firstAttribute="width" secondItem="5qB-5x-MAb" secondAttribute="width" multiplier="1:3" constant="-40" id="Viu-jC-JYm"/>
+                            <constraint firstItem="YaO-IH-oYk" firstAttribute="width" secondItem="5qB-5x-MAb" secondAttribute="width" multiplier="1:3" constant="-40" id="Z1p-6i-J0w"/>
+                            <constraint firstItem="9iP-MW-dsc" firstAttribute="centerY" secondItem="tzv-6M-IiC" secondAttribute="centerY" id="cwi-vm-OTb"/>
+                            <constraint firstItem="JsB-Q2-EuN" firstAttribute="top" secondItem="YaO-IH-oYk" secondAttribute="bottom" constant="100" id="ib5-KT-L1V"/>
+                            <constraint firstItem="YaO-IH-oYk" firstAttribute="top" secondItem="fMX-h9-H6g" secondAttribute="top" constant="50" id="kWD-Bc-Oi2"/>
+                            <constraint firstItem="9iP-MW-dsc" firstAttribute="leading" secondItem="tzv-6M-IiC" secondAttribute="trailing" constant="40" id="mwU-2B-PJR"/>
+                            <constraint firstItem="alK-yt-UIr" firstAttribute="centerY" secondItem="YaO-IH-oYk" secondAttribute="centerY" id="qJa-fW-N1Y"/>
+                            <constraint firstItem="tzv-6M-IiC" firstAttribute="top" secondItem="JsB-Q2-EuN" secondAttribute="bottom" constant="100" id="taE-Ut-PM4"/>
+                            <constraint firstItem="GIT-ww-4pz" firstAttribute="leading" secondItem="JsB-Q2-EuN" secondAttribute="trailing" constant="40" id="ye6-DL-kPu"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="fMX-h9-H6g"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" id="MkT-qk-Fjx"/>
                     <connections>
                         <outlet property="fontColor" destination="GIT-ww-4pz" id="EcT-Xg-1F0"/>
+                        <outlet property="fontColorLabel" destination="JsB-Q2-EuN" id="nEz-gT-NKP"/>
                         <outlet property="fontSizeLabel" destination="YaO-IH-oYk" id="P08-cp-xZ7"/>
                         <outlet property="fontSizeSlider" destination="alK-yt-UIr" id="5P9-CV-1Nt"/>
                         <outlet property="languageControl" destination="9iP-MW-dsc" id="ZvF-d6-kk6"/>
+                        <outlet property="languageLabel" destination="tzv-6M-IiC" id="ctw-Nq-BC6"/>
                         <segue destination="Am3-Rn-SY5" kind="popoverPresentation" identifier="chooseColorSegue" popoverAnchorView="GIT-ww-4pz" id="L4Y-6c-YQZ">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                         </segue>
@@ -377,52 +406,53 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kg2-cj-KUR">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kg2-cj-KUR">
                                 <rect key="frame" x="0.0" y="206" width="320" height="274"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FdY-4N-I4S">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="184"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FdY-4N-I4S">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="206"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Red" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2du-wf-o7V" customClass="CustomizableLabel" customModule="CitiesWeatherApp" customModuleProvider="target">
-                                        <rect key="frame" x="18" y="29" width="78" height="21"/>
+                                        <rect key="frame" x="18" y="29" width="110" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="red"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Blue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r3H-hg-U9C" customClass="CustomizableLabel" customModule="CitiesWeatherApp" customModuleProvider="target">
-                                        <rect key="frame" x="18" y="135" width="42" height="21"/>
+                                        <rect key="frame" x="18" y="135" width="110" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="blue"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <slider opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="q4a-0z-xLl">
-                                        <rect key="frame" x="103" y="74" width="206" height="30"/>
+                                        <rect key="frame" x="142" y="74" width="167" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <connections>
                                             <action selector="colorSliderChanged:" destination="Am3-Rn-SY5" eventType="valueChanged" id="oZl-lJ-5Nm"/>
                                         </connections>
                                     </slider>
                                     <slider opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="sTS-sl-kWY">
-                                        <rect key="frame" x="103" y="131" width="208" height="30"/>
+                                        <rect key="frame" x="142" y="131" width="169" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <connections>
                                             <action selector="colorSliderChanged:" destination="Am3-Rn-SY5" eventType="valueChanged" id="3FM-jX-32d"/>
                                         </connections>
                                     </slider>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Green" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dit-Jm-aI2" customClass="CustomizableLabel" customModule="CitiesWeatherApp" customModuleProvider="target">
-                                        <rect key="frame" x="18" y="82" width="61" height="21"/>
+                                        <rect key="frame" x="18" y="82" width="110" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="green"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="usV-vX-DKU">
-                                        <rect key="frame" x="103" y="21" width="195" height="30"/>
+                                        <rect key="frame" x="142" y="21" width="156" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <connections>
                                             <action selector="colorSliderChanged:" destination="Am3-Rn-SY5" eventType="valueChanged" id="twU-3B-2CH"/>
@@ -433,12 +463,26 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Kg2-cj-KUR" firstAttribute="top" secondItem="FdY-4N-I4S" secondAttribute="bottom" id="9zO-Pz-Gkg"/>
+                            <constraint firstItem="Kg2-cj-KUR" firstAttribute="bottom" secondItem="Vto-up-mQf" secondAttribute="bottom" id="Afi-T5-SF2"/>
+                            <constraint firstItem="Kg2-cj-KUR" firstAttribute="top" secondItem="gcI-1L-sXB" secondAttribute="top" constant="206" id="IPf-sK-bgx"/>
+                            <constraint firstItem="FdY-4N-I4S" firstAttribute="trailing" secondItem="Vto-up-mQf" secondAttribute="trailing" id="J3B-6r-o99"/>
+                            <constraint firstItem="FdY-4N-I4S" firstAttribute="top" secondItem="Vto-up-mQf" secondAttribute="top" id="No3-th-IBS"/>
+                            <constraint firstItem="FdY-4N-I4S" firstAttribute="leading" secondItem="Vto-up-mQf" secondAttribute="leading" id="PK1-Ek-3c8"/>
+                            <constraint firstItem="Kg2-cj-KUR" firstAttribute="top" secondItem="FdY-4N-I4S" secondAttribute="bottom" id="h0f-YJ-xuz"/>
+                            <constraint firstItem="Kg2-cj-KUR" firstAttribute="leading" secondItem="Vto-up-mQf" secondAttribute="leading" id="mik-HM-u8b"/>
+                            <constraint firstItem="Kg2-cj-KUR" firstAttribute="trailing" secondItem="Vto-up-mQf" secondAttribute="trailing" id="zcX-Hs-0Cp"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Vto-up-mQf"/>
                     </view>
                     <connections>
+                        <outlet property="blueLabel" destination="r3H-hg-U9C" id="WnV-r0-Kgk"/>
                         <outlet property="blueSlider" destination="sTS-sl-kWY" id="GJr-5O-mJv"/>
                         <outlet property="colorView" destination="Kg2-cj-KUR" id="3Ty-3P-RdB"/>
+                        <outlet property="greenLabel" destination="Dit-Jm-aI2" id="HcK-4G-RqV"/>
                         <outlet property="greenSlider" destination="q4a-0z-xLl" id="l2H-Pd-F2R"/>
+                        <outlet property="redLabel" destination="2du-wf-o7V" id="wD1-XX-nOM"/>
                         <outlet property="redSlider" destination="usV-vX-DKU" id="rQj-Ex-oez"/>
                     </connections>
                 </viewController>
@@ -477,10 +521,10 @@
             </objects>
             <point key="canvasLocation" x="-31" y="1647"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar View Controller-->
         <scene sceneID="O01-nH-FMU">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="U1r-RX-mQV" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="U1r-RX-mQV" customClass="TabBarViewController" customModule="CitiesWeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="AYL-Yb-Q7B">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -488,6 +532,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
+                        <outlet property="tabBarControl" destination="AYL-Yb-Q7B" id="H6F-lc-2kN"/>
                         <segue destination="2sZ-Ms-lB2" kind="relationship" relationship="viewControllers" id="ZlP-Gb-CLK"/>
                         <segue destination="0Oc-yv-mj9" kind="relationship" relationship="viewControllers" id="Mxz-GA-yUf"/>
                         <segue destination="u6Z-fc-Zhp" kind="relationship" relationship="viewControllers" id="778-7c-384"/>

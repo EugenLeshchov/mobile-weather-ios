@@ -8,22 +8,19 @@
 
 import UIKit
 import MapKit
+import Alamofire
+import SwiftyJSON
 
 class MapViewController: UIViewController, MKMapViewDelegate, UIGestureRecognizerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet var gestureRecognizer: UITapGestureRecognizer!
     var cityAnnotation: CityAnnotation?
-    var cityCoordinate: CLLocationCoordinate2D?
-    var localizationManager: LocalizationManager!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
-        localizationManager = LocalizationManager()
-        localizationManager.addLocalizationCallback() { (locale: String) in
-            self.tabBarItem.title = self.tabBarItem.title!.localized(lang: locale)
-        }
+        gestureRecognizer.delegate = self
         // Do any additional setup after loading the view.
     }
 
@@ -44,35 +41,55 @@ class MapViewController: UIViewController, MKMapViewDelegate, UIGestureRecognize
                 annotationView.isEnabled = true
                 annotationView.canShowCallout = true
                 
-                let windIcon = UIImage(named: "arrow_icon")
-                let windIconView = UIImageView()
-                windIconView.image = windIcon
-                windIconView.clipsToBounds = true
-                let transform = CGAffineTransform(scaleX: 0.3, y: 0.3).concatenating(CGAffineTransform(rotationAngle: CGFloat(cityAnnotation.windDirection).toRadians))
-                windIconView.transform = transform
-                annotationView.detailCalloutAccessoryView = windIconView
+                let calloutView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+                annotationView.rightCalloutAccessoryView = calloutView
+                let imageView = UIImageView()
+                imageView.image = UIImage(named: "arrow_icon")
+                calloutView.addSubview(imageView)
+                imageView.frame = calloutView.bounds
+                imageView.transform = CGAffineTransform(rotationAngle: CGFloat(cityAnnotation.windDirection).toRadians)
                 return annotationView
             }
         }
         return nil
     }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if touch.view is MKAnnotationView {
+            return false
+        }
+        return true
+    }
     	
     @IBAction func mapViewTapped(_ sender: UITapGestureRecognizer) {
         let location = gestureRecognizer.location(in: mapView)
-        cityCoordinate = mapView.convert(location,toCoordinateFrom: mapView)
-        
+        let cityCoordinate = mapView.convert(location,toCoordinateFrom: mapView)
         if cityAnnotation != nil {
             mapView.removeAnnotation(cityAnnotation!)
-            
         }
-        cityAnnotation = CityAnnotation(title: "city", subtitle: "weather", coordinate: cityCoordinate!, windDirection: 45)
-        mapView.addAnnotation(cityAnnotation!)
-     
+        fetchWeatherForCoordinates(cityCoordinate: cityCoordinate)
+    }
+    
+    func fetchWeatherForCoordinates(cityCoordinate: CLLocationCoordinate2D) {
+        let token = "138ed6a22079c3e4f0cf209f46cfb39a"
+        let lat = cityCoordinate.latitude
+        let lon = cityCoordinate.longitude
+        let weatherApiUrl = "https://api.openweathermap.org/data/2.5/weather?lat=\(lat)&lon=\(lon)&appid=\(token)&units=metric"
+        Alamofire.request(weatherApiUrl).responseJSON { response in
+            if let data = response.data {
+                let json = JSON(data)
+                let windSpeed = json["wind"]["speed"].doubleValue
+                let windDirection = json["wind"]["deg"].doubleValue
+                let temperature = json["main"]["temp"].doubleValue
+                let humidity = json["main"]["humidity"].doubleValue
+                let pressure = json["main"]["pressure"].doubleValue
+                let cityName = json["name"].stringValue
+                let weather = self.formattedWeather(temperature: temperature, humidity: humidity, pressure: pressure)
+                self.cityAnnotation = CityAnnotation(title: cityName, subtitle: weather, coordinate: cityCoordinate, windDirection: windDirection)
+                self.mapView.addAnnotation(self.cityAnnotation!)
 
-        
-        
-//        mapView.selectAnnotation(cityAnnotation!, animated: false)
-        
+            }
+        }
     }
     /*
     // MARK: - Navigation

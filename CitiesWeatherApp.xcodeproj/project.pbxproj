@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		91F907D946F38CD7A4FA16CC /* Pods_CitiesWeatherApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B96951710564848DCB6BE1A /* Pods_CitiesWeatherApp.framework */; };
 		F5005B2E207539D000DDF797 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F5005B30207539D000DDF797 /* Localizable.strings */; };
-		F5005B332075662B00DDF797 /* LocalizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5005B322075662B00DDF797 /* LocalizationManager.swift */; };
 		F50146D1206808CE006E6E4D /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50146D0206808CD006E6E4D /* ContainerViewController.swift */; };
 		F5032840206AC59C00131CB0 /* CityAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F503283F206AC59C00131CB0 /* CityAnnotation.swift */; };
 		F5032842206AE70A00131CB0 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5032841206AE70A00131CB0 /* MapViewController.swift */; };
@@ -17,6 +16,8 @@
 		F5056AEF20641F1600D9E929 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5056AED20641F1600D9E929 /* Main.storyboard */; };
 		F5056AF120641F1600D9E929 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5056AF020641F1600D9E929 /* Assets.xcassets */; };
 		F5056AF420641F1600D9E929 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5056AF220641F1600D9E929 /* LaunchScreen.storyboard */; };
+		F5192E94208681F500F18F3B /* CustomizableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5192E93208681F500F18F3B /* CustomizableLabel.swift */; };
+		F5192E962086825C00F18F3B /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5192E952086825C00F18F3B /* UIViewControllerExtensions.swift */; };
 		F529AF7B206420B900218488 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F529AF7A206420B900218488 /* MasterViewController.swift */; };
 		F529AF7E2064210500218488 /* cities.json in Resources */ = {isa = PBXBuildFile; fileRef = F529AF7C2064210400218488 /* cities.json */; };
 		F529AF7F2064210500218488 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = F529AF7D2064210400218488 /* City.swift */; };
@@ -24,7 +25,9 @@
 		F529AF83206424FC00218488 /* WeatherInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F529AF82206424FC00218488 /* WeatherInfo.swift */; };
 		F529AF8520642D8F00218488 /* CityDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F529AF8420642D8F00218488 /* CityDetailsViewController.swift */; };
 		F529AF8720642E5800218488 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F529AF8620642E5800218488 /* MapKit.framework */; };
+		F53F0C3B207FBE890080CFD3 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53F0C3A207FBE890080CFD3 /* TabBarViewController.swift */; };
 		F54878D12073FC8B0028B4C4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54878D02073FC8B0028B4C4 /* SettingsViewController.swift */; };
+		F555B4D0207FDECD00EF2858 /* GlobalSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F555B4CF207FDECD00EF2858 /* GlobalSettings.swift */; };
 		F58EA4392073FFF2003305E2 /* color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58EA4382073FFF2003305E2 /* color.swift */; };
 		F58EA43B2074032E003305E2 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58EA43A2074032E003305E2 /* ColorPickerViewController.swift */; };
 /* End PBXBuildFile section */
@@ -38,7 +41,6 @@
 		F5005B2B2075393600DDF797 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		F5005B2F207539D000DDF797 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F5005B31207539D600DDF797 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
-		F5005B322075662B00DDF797 /* LocalizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationManager.swift; sourceTree = "<group>"; };
 		F50146D0206808CD006E6E4D /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		F503283F206AC59C00131CB0 /* CityAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityAnnotation.swift; sourceTree = "<group>"; };
 		F5032841206AE70A00131CB0 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -48,6 +50,8 @@
 		F5056AF020641F1600D9E929 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F5056AF320641F1600D9E929 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F5056AF520641F1600D9E929 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F5192E93208681F500F18F3B /* CustomizableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizableLabel.swift; sourceTree = "<group>"; };
+		F5192E952086825C00F18F3B /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		F529AF7A206420B900218488 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		F529AF7C2064210400218488 /* cities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cities.json; sourceTree = "<group>"; };
 		F529AF7D2064210400218488 /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
@@ -55,7 +59,9 @@
 		F529AF82206424FC00218488 /* WeatherInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherInfo.swift; sourceTree = "<group>"; };
 		F529AF8420642D8F00218488 /* CityDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailsViewController.swift; sourceTree = "<group>"; };
 		F529AF8620642E5800218488 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		F53F0C3A207FBE890080CFD3 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		F54878D02073FC8B0028B4C4 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		F555B4CF207FDECD00EF2858 /* GlobalSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalSettings.swift; sourceTree = "<group>"; };
 		F58EA4382073FFF2003305E2 /* color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = color.swift; sourceTree = "<group>"; };
 		F58EA43A2074032E003305E2 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -112,8 +118,10 @@
 		F5056AE820641F1600D9E929 /* CitiesWeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				F5192E92208681B200F18F3B /* extensions */,
+				F53F0C3A207FBE890080CFD3 /* TabBarViewController.swift */,
+				F555B4CF207FDECD00EF2858 /* GlobalSettings.swift */,
 				F54878D02073FC8B0028B4C4 /* SettingsViewController.swift */,
-				F5005B322075662B00DDF797 /* LocalizationManager.swift */,
 				F58EA4382073FFF2003305E2 /* color.swift */,
 				F5056AE920641F1600D9E929 /* AppDelegate.swift */,
 				F5056AED20641F1600D9E929 /* Main.storyboard */,
@@ -133,6 +141,15 @@
 				F5056AF520641F1600D9E929 /* Info.plist */,
 			);
 			path = CitiesWeatherApp;
+			sourceTree = "<group>";
+		};
+		F5192E92208681B200F18F3B /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F5192E93208681F500F18F3B /* CustomizableLabel.swift */,
+				F5192E952086825C00F18F3B /* UIViewControllerExtensions.swift */,
+			);
+			path = extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,13 +291,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5005B332075662B00DDF797 /* LocalizationManager.swift in Sources */,
+				F5192E962086825C00F18F3B /* UIViewControllerExtensions.swift in Sources */,
 				F529AF8520642D8F00218488 /* CityDetailsViewController.swift in Sources */,
 				F529AF7B206420B900218488 /* MasterViewController.swift in Sources */,
 				F58EA43B2074032E003305E2 /* ColorPickerViewController.swift in Sources */,
+				F5192E94208681F500F18F3B /* CustomizableLabel.swift in Sources */,
+				F53F0C3B207FBE890080CFD3 /* TabBarViewController.swift in Sources */,
 				F50146D1206808CE006E6E4D /* ContainerViewController.swift in Sources */,
 				F54878D12073FC8B0028B4C4 /* SettingsViewController.swift in Sources */,
 				F5032840206AC59C00131CB0 /* CityAnnotation.swift in Sources */,
+				F555B4D0207FDECD00EF2858 /* GlobalSettings.swift in Sources */,
 				F5032842206AE70A00131CB0 /* MapViewController.swift in Sources */,
 				F5056AEA20641F1600D9E929 /* AppDelegate.swift in Sources */,
 				F58EA4392073FFF2003305E2 /* color.swift in Sources */,

@@ -10,6 +10,9 @@ import UIKit
 
 struct WeatherInfo {
     let id: Int
-    var description: String?
-    var updatedAt: TimeInterval?
+    var windSpeed: Double?
+    var windDirection: Double?
+    var temperature: Double?
+    var humidity: Double?
+    var pressure: Double?
 }

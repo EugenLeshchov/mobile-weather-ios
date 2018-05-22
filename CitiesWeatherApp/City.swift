@@ -10,8 +10,8 @@ import UIKit
 
 struct City {
     let name: String
-    let latitude: Float
-    let longtitude: Float
+    let latitude: Double
+    let longtitude: Double
     var weatherInfo: WeatherInfo
     let imageUrl: String
     var image: UIImage = UIImage(named: "default_city_icon")!

@@ -19,9 +19,12 @@ class MasterViewController: UITableViewController {
     var cities: [City]!
     @IBOutlet var citiesTableView: UITableView!
     weak var delegate: CitySelectionDelegate?
+    private let citiesRefreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        citiesTableView.refreshControl = citiesRefreshControl
+        citiesRefreshControl.addTarget(self, action: #selector(MasterViewController.updateCities), for: .valueChanged)
         loadImages()
     }
 
@@ -47,10 +50,11 @@ class MasterViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cityTableViewCell", for: indexPath) as? CityTableViewCell
             else { fatalError("The dequeued cell is not an instance of CityTableViewCell.") }
         let city = cities[indexPath.row]
+        let weatherInfo = city.weatherInfo
         cell.cityName.text = city.name
         cell.cityImage.image = city.image
         cell.cityDescription.text = city.description
-        cell.cityWeather.text = formattedWeather()
+        cell.cityWeather.text = formattedWeather(temperature: weatherInfo.temperature, humidity: weatherInfo.humidity, pressure: weatherInfo.pressure)
         cell.cityCoordinates.text = formattedCoordinates(latitude: city.latitude, longtitude: city.longtitude)
         // Configure the cell...
 
@@ -68,7 +72,7 @@ class MasterViewController: UITableViewController {
                     self.cities[index].image = image!
                     let indexPath = IndexPath(item: index, section: 0)
                     self.citiesTableView.reloadRows(at: [indexPath], with: .top)
-                    self.delegate?.citySelected(self.cities[index])
+//                    self.delegate?.citySelected(self.cities[index])
                 }
             }
         }
@@ -106,11 +110,11 @@ class MasterViewController: UITableViewController {
         for jsonCity in json.arrayValue {
             let name = jsonCity["name"].stringValue
             let imageUrl = jsonCity["imageUrl"].stringValue
-            let latitude = jsonCity["latitude"].floatValue
-            let longtitude = jsonCity["longtitude"].floatValue
+            let latitude = jsonCity["latitude"].doubleValue
+            let longtitude = jsonCity["longtitude"].doubleValue
             let id = jsonCity["weatherInfo"]["id"].intValue
             let description = jsonCity["description"].stringValue
-            let weatherInfo = WeatherInfo(id: id, description: nil, updatedAt: nil)
+            let weatherInfo = WeatherInfo(id: id, windSpeed: nil, windDirection: nil, temperature: nil, humidity: nil, pressure: nil)
             let city = City(name: name, latitude: latitude, longtitude: longtitude, weatherInfo: weatherInfo, imageUrl: imageUrl, image: UIImage(named: "default_city_icon")!, description: description)
             result.append(city)
         }
@@ -118,12 +122,16 @@ class MasterViewController: UITableViewController {
     }
 
     
-    func formattedCoordinates(latitude: Float, longtitude: Float) -> String {
+    func formattedCoordinates(latitude: Double, longtitude: Double) -> String {
         return "Latitude: \(NSString(format: "%.6f", latitude)), longtitude: \(NSString(format: "%.6f", longtitude))"
     }
     
-    func formattedWeather() -> String {
-        return ""
+    func formattedWeather(temperature: Double?, humidity: Double?, pressure: Double?) -> String {
+        var weather: String = ""
+        if temperature != nil { weather += "Temperature: \(temperature!)°C"}
+        if humidity != nil { weather += " humidity: \(humidity!)%"}
+        if pressure != nil { weather += " pressure: \(pressure!) mm Hg"}
+        return weather
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -133,6 +141,37 @@ class MasterViewController: UITableViewController {
             let detailNavigationController = detailViewController.navigationController {
             splitViewController?.showDetailViewController(detailNavigationController, sender: nil)
         }
+    }
+    
+    func updateCityWeatherInfo(index: Int){
+        let token = "138ed6a22079c3e4f0cf209f46cfb39a"
+        let weatherApiUrl = "https://api.openweathermap.org/data/2.5/weather?id=\(cities[index].weatherInfo.id)&appid=\(token)&units=metric"
+        Alamofire.request(weatherApiUrl).responseJSON { response in
+            print(response)
+            if let data = response.data {
+                let json = JSON(data)
+                print(json)
+                self.cities[index].weatherInfo.windSpeed = json["wind"]["speed"].doubleValue
+                self.cities[index].weatherInfo.windDirection = json["wind"]["deg"].doubleValue
+                self.cities[index].weatherInfo.temperature = json["main"]["temp"].doubleValue
+                self.cities[index].weatherInfo.humidity = json["main"]["humidity"].doubleValue
+                self.cities[index].weatherInfo.pressure = json["main"]["pressure"].doubleValue
+                let indexPath = IndexPath(item: index, section: 0)
+                self.citiesTableView.reloadRows(at: [indexPath], with: .top)
+            }
+        }
+    }
+    
+    func updateCitiesWeatherInfo() {
+        for i in 0..<cities.count {
+            updateCityWeatherInfo(index: i)
+        }
+    }
+    
+    @objc func updateCities() {
+        print("Cities updated")
+        updateCitiesWeatherInfo()
+        citiesRefreshControl.endRefreshing()
     }
 
     /*

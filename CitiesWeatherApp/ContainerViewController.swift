@@ -82,11 +82,11 @@ class ContainerViewController: UIViewController, UISplitViewControllerDelegate {
         for jsonCity in json.arrayValue {
             let name = jsonCity["name"].stringValue
             let imageUrl = jsonCity["imageUrl"].stringValue
-            let latitude = jsonCity["latitude"].floatValue
-            let longtitude = jsonCity["longtitude"].floatValue
+            let latitude = jsonCity["latitude"].doubleValue
+            let longtitude = jsonCity["longtitude"].doubleValue
             let id = jsonCity["weatherInfo"]["id"].intValue
             let description = jsonCity["description"].stringValue
-            let weatherInfo = WeatherInfo(id: id, description: nil, updatedAt: nil)
+            let weatherInfo = WeatherInfo(id: id, windSpeed: nil, windDirection: nil, temperature: nil, humidity: nil, pressure: nil)
             let city = City(name: name, latitude: latitude, longtitude: longtitude, weatherInfo: weatherInfo, imageUrl: imageUrl, image: UIImage(named: "default_city_icon")!, description: description)
             result.append(city)
         }
